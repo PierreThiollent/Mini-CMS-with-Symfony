@@ -37,13 +37,10 @@ class ArticlesType extends AbstractType
             ->add('content', TextareaType::class, [
                 'attr' => ['rows' => 20],
                 'label' => 'Contenu',
-                'constraints' => [
-                    new NotBlank(['message' => 'Le contenu ne doit pas être vide']),
-                ],
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Enregistrer'
-            ]);;
+            ]);
     }
 
     /**
