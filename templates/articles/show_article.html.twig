@@ -8,6 +8,8 @@
 
 {% block main %}
     <h1>{{ article.title }}</h1>
-
+    <p class="post-metadata">
+        <span class="metadata"><i class="fa fa-link"></i> {{ article.slug }}</span>
+    </p>
     {{ article.content }}
 {% endblock %}
