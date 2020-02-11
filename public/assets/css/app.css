@@ -1,0 +1,12 @@
+a {
+    color: #019ebd;
+}
+
+a:hover {
+    color: #019ebd;
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover,
+.navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    color: #019ebd;
+}
