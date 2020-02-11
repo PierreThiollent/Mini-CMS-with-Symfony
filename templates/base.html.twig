@@ -17,6 +17,7 @@
     {% endblock %}
 </head>
 
+<body>
 {% block header %}
     <header>
         <div class="navbar navbar-default navbar-static-top" role="navigation">
@@ -36,7 +37,7 @@
                             </li>
 
                             <li>
-                                <a>
+                                <a href="{{ path('articles_all') }}">
                                     <i class="fa fa-lock"></i> Admin
                                 </a>
                             </li>
@@ -66,11 +67,16 @@
     <footer>
         <div class="container">
             <div class="row">
-                <img class="logo" src="{{ asset('assets/images/logo-NWS.png') }}" width="20%"/>
+                <div class="logo col-md-3 col-lg-6">
+                    <img class="logo" src="{{ asset('assets/images/logo-NWS.png') }}" width="30%" alt="Logo NWS"/>
+                </div>
+                <div class="copyright col-md-5 col-lg-6">
+                    <p>Made with️ ❤️ by <a href="https://pierre-thiollent.fr" target="_blank">Pierre Thiollent</a> in
+                        Rouen 📍</p>
+                </div>
             </div>
         </div>
     </footer>
 {% endblock %}
-
 </body>
 </html>
