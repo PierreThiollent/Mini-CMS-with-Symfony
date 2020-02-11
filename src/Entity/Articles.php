@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticlesRepository")
+ * @ORM\Table(name="articles")
  */
 class Articles
 {
@@ -18,11 +20,13 @@ class Articles
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      */
     private $content;
 
@@ -67,6 +71,8 @@ class Articles
 
     public function setSlug(string $slug): self
     {
-        return $this->slug;
+        $this->slug = $slug;
+
+        return $this;
     }
 }
