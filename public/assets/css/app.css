@@ -7,3 +7,14 @@ a {
     color: white;
     background-color: #53b998;
 }
+
+footer .row {
+    display: flex;
+    align-items: center;
+}
+
+footer .copyright p {
+    color: initial;
+    font-size: 16px;
+    margin: 0;
+}
