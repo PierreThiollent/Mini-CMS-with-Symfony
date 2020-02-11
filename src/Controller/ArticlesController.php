@@ -33,7 +33,7 @@ class ArticlesController extends AbstractController
 
     /**
      * Method tho show one article
-     * @Route("/article/{slug}", name="article_show")
+     * @Route("/{slug}", name="article_show")
      * @param Request $request
      * @param EntityManagerInterface $em
      * @return Response
