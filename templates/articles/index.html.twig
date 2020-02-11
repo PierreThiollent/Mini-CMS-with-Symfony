@@ -4,26 +4,15 @@
     {{ parent() ~ ' - Liste des articles' }}
 {% endblock %}
 
+{% block body_id 'articles_all' %}
+
 {% block body %}
-    <style>
-        .example-wrapper {
-            margin: 0 auto;
-            max-width: 800px;
-            width: 100%;
-            font: 18px/1.5 sans-serif;
-            text-align: center
-        }
-
-    </style>
-
-<div class="example-wrapper">
-    <h1>Liste des articles</h1>
     {% for article in articles %}
         <article>
             <h2>
-{#                <a href="{{ path('blog_post', {'slug': article.slug}) }}">#}
+                <a>
                     {{ article.title }}
-{#                </a>#}
+                </a>
             </h2>
 
             <p>
@@ -34,5 +23,4 @@
     {% else %}
         <div class="well">Il n'y a pas encore d'articles</div>
     {% endfor %}
-</div>
 {% endblock %}
