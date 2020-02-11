@@ -1,0 +1,27 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}
+    {{ parent() ~ ' - ' ~ article.title|lower }}
+{% endblock %}
+
+{% block body_id 'admin_post_show' %}
+
+{% block main %}
+    <h1>{{ article.title }}</h1>
+
+    <p class="post-metadata">
+        <span class="metadata"><i class="fa fa-link"></i> {{ article.slug }}</span>
+    </p>
+
+    {{ article.content }}
+{% endblock %}
+
+{% block sidebar %}
+    <div class="section">
+        <a href="{{ path('admin_article_delete', {slug: article.slug}) }}" class="btn btn-lg btn-block btn-danger">
+            <i class="fa fa-trash"></i> Supprimer l'article
+        </a>
+    </div>
+
+    {{ parent() }}
+{% endblock %}
