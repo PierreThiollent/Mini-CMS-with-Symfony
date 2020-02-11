@@ -19,6 +19,23 @@ class ArticlesController extends AbstractController
 {
 
     /**
+     * Liste les articles
+     * @Route("/articles", methods={"GET"}, name="admin_articles_all")
+     * @param EntityManagerInterface $em
+     * @return Response
+     */
+    public function index(EntityManagerInterface $em): Response
+    {
+        $post_list = $em->getRepository(Articles::class)->findBy([], ['id' => 'DESC']);
+
+        return $this->render(
+            'admin/index.html.twig',
+            ['articles' => $post_list]
+        );
+    }
+
+
+    /**
      * Création d'un article
      * @Route("/new", methods={"GET", "POST"}, name="admin_article_new")
      * @param Request $request
