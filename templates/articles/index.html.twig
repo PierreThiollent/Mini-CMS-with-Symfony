@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ parent() ~ ' - Liste des articles' }}
+    {{ parent() ~ '- Liste des articles' }}
 {% endblock %}
 
 {% block body_id 'articles_all' %}
@@ -10,7 +10,7 @@
     {% for article in articles %}
         <article>
             <h2>
-                <a>
+                <a href="{{ path('article_show', {'slug': article.slug}) }}">
                     {{ article.title }}
                 </a>
             </h2>
