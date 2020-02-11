@@ -21,7 +21,7 @@
                         <a href="{{ path('admin_article_show', {'slug': article.slug}) }}" class="btn btn-sm btn-default">
                             <i class="fa fa-eye"></i> Afficher
                         </a>
-                        <a href="" class="btn btn-sm btn-primary">
+                        <a href="{{ path('admin_article_edit', {'slug': article.slug}) }}" class="btn btn-sm btn-primary">
                             <i class="fa fa-edit"></i> Modifier
                         </a>
                     </div>
