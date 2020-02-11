@@ -34,7 +34,6 @@ class ArticlesController extends AbstractController
         );
     }
 
-
     /**
      * Création d'un article
      * @Route("/new", methods={"GET", "POST"}, name="admin_article_new")
@@ -65,7 +64,7 @@ class ArticlesController extends AbstractController
             return $this->redirectToRoute('articles_all');
         }
 
-        return $this->render('admin/new_article.html.twig', [
+        return $this->render('admin/article_new.html.twig', [
             'form_post' => $form_post->createView()
         ]);
     }
@@ -125,7 +124,7 @@ class ArticlesController extends AbstractController
 
             $em->flush();
 
-            return $this->redirectToRoute('admin_article_edit', ['slug' => $article->getSlug()]);
+            return $this->redirectToRoute('admin_articles_all');
         }
 
         return $this->render('admin/article_update.html.twig', [
