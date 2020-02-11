@@ -100,4 +100,37 @@ class ArticlesController extends AbstractController
 
         return $this->redirectToRoute('admin_articles_all');
     }
+
+    /**
+     * Modification d'un article
+     * @Route("/article/{slug}/update", name="admin_article_edit", methods={"GET", "POST"})
+     * @param Request $request
+     * @param Articles $article
+     * @param EntityManagerInterface $em
+     * @return Response
+     */
+    public function edit(Request $request, Articles $article, EntityManagerInterface $em): Response
+    {
+        $form = $this->createForm(ArticlesType::class, $article);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $article->setSlug(
+                preg_replace(
+                    '/\s+/',
+                    '-',
+                    \mb_strtolower(trim(strip_tags($article->getSlug())), 'UTF-8')
+                )
+            );
+
+            $em->flush();
+
+            return $this->redirectToRoute('admin_article_edit', ['slug' => $article->getSlug()]);
+        }
+
+        return $this->render('admin/article_update.html.twig', [
+            'article' => $article,
+            'form_post' => $form->createView(),
+        ]);
+    }
 }
