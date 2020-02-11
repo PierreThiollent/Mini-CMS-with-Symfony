@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Articles;
 use App\Form\ArticlesType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,14 +20,12 @@ class ArticlesController extends AbstractController
 
     /**
      * Création d'un article
-     *
-     * @Route("/new", methods={"GET", "POST"}, name="admin_post_new")
-     *
+     * @Route("/new", methods={"GET", "POST"}, name="admin_article_new")
      * @param Request $request
-     *
+     * @param EntityManagerInterface $em
      * @return Response
      */
-    public function new(Request $request): Response
+    public function new(Request $request, EntityManagerInterface $em): Response
     {
         $article = new Articles();
         $form_post = $this->createForm(ArticlesType::class, $article);
@@ -44,10 +43,8 @@ class ArticlesController extends AbstractController
                 )
             );
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($article);
-            $entityManager->flush();
-
+            $em->persist($article);
+            $em->flush();
             return $this->redirectToRoute('articles_all');
         }
 
