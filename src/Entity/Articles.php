@@ -33,6 +33,7 @@ class Articles
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      * @Assert\Unique()
      */
     private $slug;
