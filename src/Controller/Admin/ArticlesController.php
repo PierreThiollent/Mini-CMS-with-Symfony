@@ -69,4 +69,35 @@ class ArticlesController extends AbstractController
             'form_post' => $form_post->createView()
         ]);
     }
+
+    /**
+     * Affiche un article
+     * @Route("/article/{slug}", name="admin_article_show", methods={"GET"})
+     * @param Articles $articles
+     * @return Response
+     */
+    public function show(Articles $articles): Response
+    {
+        return $this->render('admin/article_detail.html.twig', [
+            'article' => $articles,
+        ]);
+    }
+
+    /**
+     * @Route("/article/{slug}/delete", name="admin_article_delete")
+     * @param Request $request
+     * @param EntityManagerInterface $em
+     * @return Response
+     */
+    public function delete(Request $request, EntityManagerInterface $em): Response
+    {
+        $slug = $request->get('slug');
+
+        $article = $em->getRepository(Articles::class)->findOneBy(['slug' => $slug]);
+
+        $em->remove($article);
+        $em->flush();
+
+        return $this->redirectToRoute('admin_articles_all');
+    }
 }
