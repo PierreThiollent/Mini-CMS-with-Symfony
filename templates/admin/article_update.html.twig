@@ -1,0 +1,17 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body_id 'admin_post_update' %}
+
+{% block main %}
+    <h1>Mise à jour d'un nouvel article</h1>
+
+    {{ form_start(form_post, {'attr': {novalidate:'novalidate'}}) }}
+    {{ form_row(form_post.title) }}
+    {{ form_row(form_post.slug) }}
+    {{ form_row(form_post.content) }}
+    {{ form_end(form_post) }}
+
+    <a href="{{ path('admin_articles_all') }}" class="btn btn-link">
+        <i class="fa fa-list-alt"></i> Retour à la liste
+    </a>
+{% endblock %}
