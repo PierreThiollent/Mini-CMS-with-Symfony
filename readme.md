@@ -32,6 +32,11 @@ $ composer install
 - BDD name : cms
 
 ### Initialisation
+Exécuter la commande ci-dessous afin de créer la base de données ainsi aue les tables.
+
+```
+$ php bin/console doctrine:schema:update --force
+```
 
 Exécuter la commande ci-dessous pour ajouter des données de test 
 
