@@ -21,9 +21,10 @@
                     {{ article.title }}
                 </a>
             </h2>
-            <small class="text-muted"><i class="fa fa-clock-o"></i> {{ article.publishedDate.format('d/m/Y à h:i') }}</small>
+            <small class="text-muted"><i class="fa fa-clock-o"></i> {{ article.publishedDate.format('d/m/Y à H:i') }}
+            </small>
             <p>
-                {{ article.content }}
+                {{ article.content|slice(0, 300) }}{% if article.content|length > 300 %}...{% endif %}
             </p>
         </article>
 
