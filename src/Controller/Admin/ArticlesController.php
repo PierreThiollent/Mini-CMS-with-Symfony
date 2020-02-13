@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Articles;
 use App\Form\ArticlesType;
+use App\Service\Slugger;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,9 +40,10 @@ class ArticlesController extends AbstractController
      * @Route("/new", methods={"GET", "POST"}, name="admin_article_new")
      * @param Request $request
      * @param EntityManagerInterface $em
+     * @param Slugger $slugger
      * @return Response
      */
-    public function new(Request $request, EntityManagerInterface $em): Response
+    public function new(Request $request, EntityManagerInterface $em, Slugger $slugger): Response
     {
         $article = new Articles();
         $form_post = $this->createForm(ArticlesType::class, $article);
@@ -51,13 +53,7 @@ class ArticlesController extends AbstractController
         if ($form_post->isSubmitted() && $form_post->isValid()) {
             $article = $form_post->getData();
 
-            $article->setSlug(
-                preg_replace(
-                    '/\s+/',
-                    '-',
-                    \mb_strtolower(trim(strip_tags($article->getSlug())), 'UTF-8')
-                )
-            );
+            $article->setSlug($slugger->Slugify($article->getSlug()));
 
             $em->persist($article);
             $em->flush();
@@ -71,7 +67,7 @@ class ArticlesController extends AbstractController
 
     /**
      * Affiche un article
-     * @Route("/article/{slug}", name="admin_article_show", methods={"GET"})
+     * @Route("/{slug}", name="admin_article_show", methods={"GET"})
      * @param Articles $articles
      * @return Response
      */
@@ -83,7 +79,8 @@ class ArticlesController extends AbstractController
     }
 
     /**
-     * @Route("/article/{slug}/delete", name="admin_article_delete")
+     * Supprime un article
+     * @Route("/{slug}/delete", name="admin_article_delete")
      * @param Request $request
      * @param EntityManagerInterface $em
      * @return Response
@@ -102,25 +99,20 @@ class ArticlesController extends AbstractController
 
     /**
      * Modification d'un article
-     * @Route("/article/{slug}/update", name="admin_article_edit", methods={"GET", "POST"})
+     * @Route("/{slug}/update", name="admin_article_edit", methods={"GET", "POST"})
      * @param Request $request
      * @param Articles $article
      * @param EntityManagerInterface $em
+     * @param Slugger $slugger
      * @return Response
      */
-    public function edit(Request $request, Articles $article, EntityManagerInterface $em): Response
+    public function edit(Request $request, Articles $article, EntityManagerInterface $em, Slugger $slugger): Response
     {
         $form = $this->createForm(ArticlesType::class, $article);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $article->setSlug(
-                preg_replace(
-                    '/\s+/',
-                    '-',
-                    \mb_strtolower(trim(strip_tags($article->getSlug())), 'UTF-8')
-                )
-            );
+            $article->setSlug($slugger->Slugify($article->getSlug()));
 
             $em->flush();
 
