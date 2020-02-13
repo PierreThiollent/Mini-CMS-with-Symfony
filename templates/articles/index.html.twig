@@ -21,7 +21,7 @@
                     {{ article.title }}
                 </a>
             </h2>
-
+            <small class="text-muted"><i class="fa fa-clock-o"></i> {{ article.publishedDate.format('d/m/Y à h:i') }}</small>
             <p>
                 {{ article.content }}
             </p>
