@@ -10,14 +10,14 @@
     <h1>{{ article.title }}</h1>
     <p class="post-metadata">
         <span class="metadata"><i class="fa fa-link"></i> {{ article.slug }}</span>
-        <small class="metadata"><i class="fa fa-clock-o"></i> {{ article.publishedDate.format('d/m/Y à h:i') }}</small>
+        <small class="metadata"><i class="fa fa-clock-o"></i> {{ article.publishedDate.format('d/m/Y à H:i') }}</small>
     </p>
     <p>{{ article.content }}</p>
 {% endblock %}
 
 {% block sidebar %}
     <div class="section">
-        <a href="{{ path('admin_article_delete', {slug: article.slug}) }}" class="btn btn-lg btn-block btn-danger">
+        <a href="{{ path('admin_article_delete', {slug: article.slug}) }}" class="btn btn-sm btn-block btn-danger">
             <i class="fa fa-trash"></i> Supprimer l'article
         </a>
     </div>
