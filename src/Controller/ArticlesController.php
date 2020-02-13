@@ -10,15 +10,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-/**
- * @Route("/articles")
- */
 class ArticlesController extends AbstractController
 {
     /**
-     * Method to show all articles
-     *
-     * @Route("/", name="articles_all")
+     * Affiche les articles
+     * @Route("/articles", name="articles_all")
      * @param EntityManagerInterface $em
      * @return Response
      */
@@ -32,7 +28,7 @@ class ArticlesController extends AbstractController
 
 
     /**
-     * Method tho show one article
+     * Affiche un article par rapport à son slug
      * @Route("/{slug}", name="article_show")
      * @param Request $request
      * @param EntityManagerInterface $em
