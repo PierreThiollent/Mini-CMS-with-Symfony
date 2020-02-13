@@ -17,6 +17,13 @@ footer .copyright p {
     color: initial;
     font-size: 16px;
     margin: 0;
+    text-align: center;
+}
+
+footer .logo,
+footer .copyright {
+    display: flex;
+    justify-content: center;
 }
 
 .search {
