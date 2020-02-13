@@ -14,7 +14,6 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
     {% endblock %}
 </head>
 
@@ -56,7 +55,7 @@
             <div id="main" class="col-sm-9">
                 {% block main %}{% endblock %}
             </div>
-            <div id="sidebar" class="col-sm-3">
+            <div id="sidebar" class="col-sm-2">
                 {% block sidebar %}{% endblock %}
             </div>
         </div>
