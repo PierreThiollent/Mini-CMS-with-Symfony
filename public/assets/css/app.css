@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap');
+
 a {
-    color: #53b998;
+    cursor: pointer;
 }
 
-.navbar-default, .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover,
-.navbar-brand:focus, .navbar-default .navbar-brand:hover {
-    color: white;
-    background-color: #53b998;
+body {
+    font-family: 'Nanito sans', sans-serif;
+}
+
+footer {
+    background-color: #2c3e50;
 }
 
 footer .row {
@@ -14,7 +18,7 @@ footer .row {
 }
 
 footer .copyright p {
-    color: initial;
+    color: white;
     font-size: 16px;
     margin: 0;
     text-align: center;
