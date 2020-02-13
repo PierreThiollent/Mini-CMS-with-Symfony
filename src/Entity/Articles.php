@@ -36,6 +36,16 @@ class Articles
      */
     private $slug;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $published_date;
+
+    public function __construct()
+    {
+        $this->published_date = new \DateTime();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,5 +85,21 @@ class Articles
         $this->slug = $slug;
 
         return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getPublishedDate(): \DateTime
+    {
+        return $this->published_date;
+    }
+
+    /**
+     * @param \DateTime $published_date
+     */
+    public function setPublishedDate(\DateTime $published_date): void
+    {
+        $this->published_date = $published_date;
     }
 }
