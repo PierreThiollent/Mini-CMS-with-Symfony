@@ -23,3 +23,8 @@ footer .copyright p {
     display: flex;
     justify-content: flex-end;
 }
+
+small {
+    display: inline-block;
+    margin-bottom: 10px;
+}
