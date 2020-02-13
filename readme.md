@@ -1,5 +1,7 @@
 # Projet de mini CMS avec Symfony 🔥
 
+![](./public/assets/images/screenshot.png)
+
 Ce projet de blog/mini CMS a été réalisé lors d'un exercice à la [Normandie Web School](https://normandie-web-school.fr/).
 J'ai choisi d'utiliser le framework Symfony pour le réaliser.
 
@@ -11,11 +13,17 @@ J'ai choisi d'utiliser le framework Symfony pour le réaliser.
 
 ### Installation 🔄
 
-`$ git clone`
+```
+$ git clone
+```
 
-`$ cd <project>`
+```
+$ cd <project>
+```
 
-`$ composer install`
+```
+$ composer install
+```
 
 ### Configuration
 
@@ -27,13 +35,17 @@ J'ai choisi d'utiliser le framework Symfony pour le réaliser.
 
 Exécuter la commande ci-dessous pour ajouter des données de test 
 
-`$ php bin/console doctrine:fixtures:load`
+```
+$ php bin/console doctrine:fixtures:load
+```
 
 ### Lancement 
 
 Pour lancer le serveur de developpement, exécuter la commande 
 
-`$ symfony serve` 
+```
+$ symfony serve
+``` 
 
 ou lancer le serveur MAMP/WAMP
 
