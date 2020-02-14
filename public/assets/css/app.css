@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap');
+
+a {
+    cursor: pointer;
+}
+
+body {
+    font-family: 'Nanito sans', sans-serif;
+    background-color: hsl(0, 0%, 98%);
+}
+
+footer {
+    background-color: #2c3e50;
+}
+
+footer .row {
+    display: flex;
+    align-items: center;
+}
+
+footer .copyright p {
+    color: white;
+    font-size: 16px;
+    margin: 0;
+    text-align: center;
+}
+
+footer .logo,
+footer .copyright {
+    display: flex;
+    justify-content: center;
+}
+
+.search {
+    display: flex;
+    justify-content: flex-end;
+}
+
+small {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.btn-back {
+    float: right;
+}

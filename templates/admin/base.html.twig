@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block header_navigation_links %}
+    <li>
+        <a href="{{ path('admin_articles_all') }}">
+            <i class="fa fa-list-alt"></i> Liste articles
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('articles_all') }}">
+            <i class="fa fa-home"></i> Retour au blog
+        </a>
+    </li>
+{% endblock %}

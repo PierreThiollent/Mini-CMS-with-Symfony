@@ -1,0 +1,45 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body_id 'admin_index' %}
+
+{% block main %}
+    <h1>Liste des articles</h1>
+
+    <table class="table table-striped table-middle-aligned">
+        <thead>
+        <tr>
+            <th scope="col">Titre</th>
+            <th scope="col" class="text-right"><i class="fa fa-cogs"></i> Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.title }}</td>
+                <td class="text-right">
+                    <div class="item-actions">
+                        <a href="{{ path('admin_article_show', {'slug': article.slug}) }}" class="btn btn-sm btn-default">
+                            <i class="fa fa-eye"></i> Afficher
+                        </a>
+                        <a href="{{ path('admin_article_edit', {'slug': article.slug}) }}" class="btn btn-sm btn-primary">
+                            <i class="fa fa-edit"></i> Modifier
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Il n'y a pas encore d'articles</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block sidebar %}
+    <div class="section actions">
+        <a href="{{ path('admin_article_new') }}" class="btn btn-md btn-block btn-success">
+            <i class="fa fa-plus"></i> Créer un article
+        </a>
+    </div>
+{% endblock %}

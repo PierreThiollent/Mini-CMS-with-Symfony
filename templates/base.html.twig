@@ -1,12 +1,82 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Hello!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>
+        {% block title %}
+            {% if app.environment != 'prod' %}
+                {{ '[' ~ app.environment|upper ~ ']' }}
+            {% endif %}
+            Mini CMS
+        {% endblock %}
+    </title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+    {% endblock %}
+</head>
+
+<body>
+{% block header %}
+    <header>
+        <div class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header col-md-5 col-lg-7">
+                    <a class="navbar-brand" href="{{ path('articles_all') }}">
+                        Normandie Web School - Mini CMS Symfony
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        {% block header_navigation_links %}
+                            <li>
+                                <a href="{{ path('articles_all') }}">
+                                    <i class="fa fa-home"></i> Blog
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ path('admin_article_new') }}">
+                                    <i class="fa fa-lock"></i> Admin
+                                </a>
+                            </li>
+                        {% endblock %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+<div class="container body-container">
+    {% block body %}
+        <div class="row">
+            <div id="main" class="col-sm-9">
+                {% block main %}{% endblock %}
+            </div>
+            <div id="sidebar" class="col-sm-2">
+                {% block sidebar %}{% endblock %}
+            </div>
+        </div>
+    {% endblock %}
+</div>
+
+{% block footer %}
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="logo col-sm-6 col-xs-12">
+                    <img class="logo" src="{{ asset('assets/images/logo-NWS.png') }}" width="40%" alt="Logo NWS"/>
+                </div>
+                <div class="copyright col-sm-6 col-xs-12">
+                    <p>Made with️ ❤️ by <a href="https://pierre-thiollent.fr" target="_blank">Pierre Thiollent</a> in
+                        Rouen 📍</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+<script src="https://kit.fontawesome.com/d0762cf9de.js" crossorigin="anonymous"></script>
+</body>
 </html>

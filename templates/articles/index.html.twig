@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() ~ '- Liste des articles' }}
+{% endblock %}
+
+{% block body_id 'articles_all' %}
+
+{% block body %}
+    <div class="row search">
+        <div class="input-group input-group-md">
+            <input id="search" type="text" class="form-control" placeholder="Search" aria-label="Search"
+                   aria-describedby="addon-wrapping">
+        </div>
+    </div>
+
+    {% for article in articles %}
+        <article>
+            <h2>
+                <a href="{{ path('article_show', {'slug': article.slug}) }}">
+                    {{ article.title }}
+                </a>
+            </h2>
+            <small class="text-muted"><i class="fa fa-clock-o"></i> {{ article.publishedDate.format('d/m/Y à H:i') }}
+            </small>
+            <p>
+                {{ article.content|slice(0, 300) }}{% if article.content|length > 300 %}...{% endif %}
+            </p>
+        </article>
+
+    {% else %}
+        <div class="well">Il n'y a pas encore d'articles</div>
+    {% endfor %}
+    <script rel="script" src="{{ asset('assets/js/main.js') }}"></script>
+{% endblock %}

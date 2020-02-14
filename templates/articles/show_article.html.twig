@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() ~ ' - ' ~ article.title|lower }}
+{% endblock %}
+
+{% block body_id 'blog_post_show' %}
+
+{% block main %}
+    <h1>{{ article.title }}</h1>
+    <small class="text-muted"><i class="fa fa-clock-o"></i> {{ article.publishedDate.format('d/m/Y à H:i') }}</small>
+    <p>{{ article.content }}</p>
+{% endblock %}
