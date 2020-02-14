@@ -6,13 +6,12 @@ Ce projet de blog/mini CMS a été réalisé lors d'un exercice à la [Normandie
 J'ai choisi d'utiliser le framework Symfony pour le réaliser.
 
 ## Prérequis 🔧
-
 - Composer
-- Php (^7.2.5)
-- Un serveur web (MAMP ou WAMP) ou bien le serveur de dev de Symfony (necéssite le CLI)
+- PHP (^7.2.5)
+- Apache
+- MySQL
 
 ### Installation 🔄
-
 ```
 $ git clone
 ```
@@ -26,16 +25,24 @@ $ composer install
 ```
 
 ### Configuration
-
-- BDD user : L'utilisateur de MAMP
-- BDD password : Password de l'utilisateur de MAMP
-- BDD name : cms
-
-### Initialisation
-Exécuter la commande ci-dessous afin de créer la base de données ainsi aue les tables.
+Créer un fichier .env.local et y renseigner cette configuration
 
 ```
-$ php bin/console doctrine:schema:update --force
+APP_ENV=dev
+APP_SECRET=whatever
+DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name?serverVersion=5.7
+```
+
+- db_user : Nom d'utilisateur MySQL
+- db_password : Mot de passe de l'utilisateur MySQL
+- db_password : cms
+- APP_SECRET : Clé à générer aléatoirement
+
+### Initialisation
+Exécuter la commande ci-dessous afin de créer la base de données ainsi que les tables.
+
+```
+$ php bin/console doctrine:migration:migrate
 ```
 
 Exécuter la commande ci-dessous pour ajouter des données de test 
@@ -45,17 +52,15 @@ $ php bin/console doctrine:fixtures:load
 ```
 
 ### Lancement 
-
 Pour lancer le serveur de developpement, exécuter la commande 
 
 ```
 $ symfony serve
 ``` 
 
-ou lancer le serveur MAMP/WAMP
+ou lancer un serveur MAMP/WAMP
 
 ### Utilisation
-
 - Serveur symfony : http://127.0.0.1:8000
 - Serveur MAMP/WAMP : http://localhost:80/nom-du-projet/public
 
