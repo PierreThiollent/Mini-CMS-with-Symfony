@@ -6,6 +6,7 @@ a {
 
 body {
     font-family: 'Nanito sans', sans-serif;
+    background-color: hsl(0, 0%, 98%);
 }
 
 footer {
@@ -38,4 +39,8 @@ footer .copyright {
 small {
     display: inline-block;
     margin-bottom: 10px;
+}
+
+.btn-back {
+    float: right;
 }
