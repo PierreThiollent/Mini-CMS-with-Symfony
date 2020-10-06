@@ -35,7 +35,7 @@ DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name?serverVersion=5.
 
 - db_user : Nom d'utilisateur MySQL
 - db_password : Mot de passe de l'utilisateur MySQL
-- db_password : cms
+- db_name : Nom de la base de données
 - APP_SECRET : Clé à générer aléatoirement
 
 ### Initialisation
